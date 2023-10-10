@@ -43,11 +43,22 @@ const searchUsers = () => {
            //creating repo-list
            const repoList = document.getElementById('repos-list')
            repoList.innerHTML='';
-           repoData.forEach
-           document.createElement(`ul`)
+           repoData.forEach((repo) => {
+            const repoInfo = document.createElement('li');
+            repoInfo.innerHTML = `
+        
+             <h3>${repo.name}</h3>
+             <p><strong>Description: </strong>${repo.description}</p>
+             <a href = '${repo.html_url}' target = '_blank'>View Repo</a> 
+            ` ;
+            repoList.appendChild(repoInfo);
+           })
+          
 
 
          } catch(error) {
+            console.error(`Error: ${error}`)
+            alert(`Error!! Try Again Later...`)
 
          }
 
@@ -55,4 +66,4 @@ const searchUsers = () => {
     })
 
 }
-//document.querySelector()
+document.addEventListener('DOMContentLoaded', searchUsers);
